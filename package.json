@@ -1,0 +1,33 @@
+{
+  "name": "notification-service",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "author": "mariamSoady <mariam.soady@crowdanalyzer.com>",
+  "description": "Notification Service",
+  "engine": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "main": "./index",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test/ --recursive --timeout=60000 --exit",
+    "coverage": "./node_modules/.bin/nyc ./node_modules/.bin/mocha ./test/ --recursive --timeout=60000 --exit",
+    "lint": "./node_modules/.bin/eslint ./src/ ./test/ ./index.js",
+    "docker": "docker-compose build --no-cache && docker-compose run node",
+    "depcheck": "./node_modules/.bin/npm-check --ignore ejs --ignore npm-check"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
+    "eslint": "^5.12.0 ",
+    "mocha": "^5.0.5",
+    "npm-check": "^5.7.1",
+    "nyc": "^13.1.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.219.0",
+    "ajv": "^4.11.8",
+    "lodash": "^4.17.10"
+  }
+}

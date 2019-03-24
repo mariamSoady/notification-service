@@ -1,0 +1,13 @@
+version: '3'
+services:
+  node:
+    tty: true
+    stdin_open: true
+    container_name: notification-service
+    env_file:
+      - ./.env
+    build:
+      context: .
+    volumes:
+      - .:/var/code:rw
+    entrypoint: './startup.sh'
