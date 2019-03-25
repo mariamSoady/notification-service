@@ -11,7 +11,7 @@ module.exports = (config, di) => {
     _.forOwn(
         servicesDefinition,
         (definition, id) => container.defineService(id, definition)
-    });
+    );
 
     return container;
 };

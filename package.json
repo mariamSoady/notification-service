@@ -10,8 +10,8 @@
   },
   "main": "./index",
   "scripts": {
-    "test": "./node_modules/.bin/mocha ./test/ --recursive --timeout=60000 --exit",
-    "coverage": "./node_modules/.bin/nyc ./node_modules/.bin/mocha ./test/ --recursive --timeout=60000 --exit",
+    "test": "./node_modules/.bin/mocha ./test/ --recursive --timeout=66000 --exit",
+    "coverage": "./node_modules/.bin/nyc ./node_modules/.bin/mocha ./test/ --recursive --timeout=6000 --exit",
     "lint": "./node_modules/.bin/eslint ./src/ ./test/ ./index.js",
     "docker": "docker-compose build --no-cache && docker-compose run node",
     "depcheck": "./node_modules/.bin/npm-check --ignore ejs --ignore npm-check"

@@ -13,6 +13,7 @@ const requestSchema = require('./services/schema/requestSchema');
 
 module.exports = config => {
     return {
+
         'notification.clients': () => [
             new clients.PushNotification(config.clients.push_notification),
             new clients.SMS(config.clients.SMS),
@@ -30,7 +31,7 @@ module.exports = config => {
 
         'notification.messenger': container => new Messenger({
             sqs: new SQS(config.sqs),
-            handler: request => container.getSetvice('notification.service').process(request),
+            handler: request => container.getService('notification.service').process(request),
         }),
     }
 };

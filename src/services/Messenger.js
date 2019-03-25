@@ -18,9 +18,9 @@ class Messenger {
         return this.sqs.receive()
             .then(message => {
                 aMessage = message;
-                return handler(message.data);
+                return this.handler(message.data);
             })
-            .then(() => this.sqs.deleteMessage(aMessage.id));
+            .then(() => this.sqs.delete(aMessage.id));
     }
 }
 

@@ -7,6 +7,8 @@ const{ IllegalArgumentError } = require('./Errors');
 
 // default queue region
 const DEFAULT_REGION = 'us-east-1';
+// wait 10 seconds if there is no messages
+const DEFAULT_QUEUE_WAIT_TIME = 10;
 
 class SQS {
     constructor(config) {

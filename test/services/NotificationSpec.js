@@ -13,6 +13,8 @@ const samples = require('../resources/samples');
 
 describe('Notification', () => {
     let notification;
+    let notifiers;
+    let validator;
 
     before(() => {
         const container = new Container();
@@ -23,6 +25,8 @@ describe('Notification', () => {
         );
 
         notification = container.getService('notification.service');
+        notifiers = container.getService('notification.clients');
+        validator = container.getService('notification.validator');
     });
 
     describe('constructor', () => {
@@ -32,6 +36,22 @@ describe('Notification', () => {
 
         it('should throw error when missing dependencies', () => {
             const fn = () => new Notification();
+            expect(fn).to.throw(Error)
+                .that.is.instanceOf(Errors.IllegalArgumentError)
+                .and.have.property('message')
+                .that.equals('missing dependencies');
+        });
+
+        it('should throw error when missing notifiers', () => {
+            const fn = () => new Notification({ validator });
+            expect(fn).to.throw(Error)
+                .that.is.instanceOf(Errors.IllegalArgumentError)
+                .and.have.property('message')
+                .that.equals('missing dependencies');
+        });
+
+        it('should throw error when missing validator', () => {
+            const fn = () => new Notification({ notifiers });
             expect(fn).to.throw(Error)
                 .that.is.instanceOf(Errors.IllegalArgumentError)
                 .and.have.property('message')
