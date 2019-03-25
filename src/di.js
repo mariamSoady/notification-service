@@ -11,6 +11,11 @@ const SQS = require('./lib/SQS');
 
 const requestSchema = require('./services/schema/requestSchema');
 
+/**
+ * define services dependencies, only this file has require statement, it decide
+ * which implemetation will be passed to dependent service, service access dependencies
+ * implementations via interfaces, so, they are decoubled from specific implementations
+ */
 module.exports = config => {
     return {
 

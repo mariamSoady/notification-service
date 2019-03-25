@@ -18,6 +18,13 @@ class ErrorTolerant {
         this.maxTrials = maxTrials || DEFAULT_MAX_TRIALS;
     }
 
+    /**
+    * handle errors throwed from specificied methods, it uses exponential wait and retry
+    * strategy, so if RateLimitError is hit, it wait in retry as set in retial times config.
+    * @param {Object} object target
+    * @param {Object} methodsErrors is a mapping to errors to be handled on which method
+    * @return a proxy to target object with error handling
+    */
     proxy(object, methodsErrors) {
         if (_.isEmpty(object) || _.isEmpty(methodsErrors)) {
             return object;

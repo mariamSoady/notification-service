@@ -27,6 +27,11 @@ class Notification {
         }
     }
 
+    /**
+    * define the flow of handling request, it's two steps to validate and pick valid
+    * notifier to send content to reciepent
+    * @param {Object} request matching notification request schema
+    */
     process(request) {
         return this.validator.validate(request)
             .then(request => {
