@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-    type: 'push_notification',
+    type: 'SMS',
     text: 'Welcome to SWVL, enjoy your free 50 L.E balance.',
-    to:   '00201064950356',
-    from: '00201000090009',
+    user:   '00201064950356',
+    title: 'SWVL Promo',
 };

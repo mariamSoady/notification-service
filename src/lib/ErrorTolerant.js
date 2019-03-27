@@ -6,10 +6,10 @@ const DEFAULT_MAX_TRIALS = 4;
 
 const _tolerate = (method, args, errors, maxTrials, trials = 1) =>
     method(...args).catch(error => {
-        if (trails >= maxTrials || !_.include(errors, error.name))
+        if (trials >= maxTrials || !_.include(errors, error.name))
             throw error;
 
-        return new Promise(resolve => setTimeout(Math.pow(2, trails) * 1000, resolve))
+        return new Promise(resolve => setTimeout(Math.pow(2, trials) * 1000, resolve))
             .then(() => _tolerate(method, args, errors, maxTrials, trials + 1))
     });
 

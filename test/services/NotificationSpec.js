@@ -81,6 +81,12 @@ describe('Notification', () => {
             expect(fn).to.throw(Error).that.is.instanceOf(Errors.IllegalArgumentError);
         });
 
+        it('should throw error if unsupported type', () => {
+            const promise = notification.process(_.extend(samples.sms, { type: 'xx' }));
+            return expect(promise).to.be.eventually
+                .rejected.instanceOf(Errors.ValidationError);
+        });
+
         it('should throw error if type is missing', () => {
             const promise = notification.process(_.omit(samples.sms, 'type'));
             return expect(promise).to.be.eventually
@@ -93,24 +99,24 @@ describe('Notification', () => {
                 .rejected.instanceOf(Errors.ValidationError);
         });
 
-        it('should throw error if to is missing', () => {
-            const promise = notification.process(_.omit(samples.sms, 'to'));
+        it('should throw error if user is missing', () => {
+            const promise = notification.process(_.omit(samples.sms, 'user'));
             return expect(promise).to.be.eventually
                 .rejected.instanceOf(Errors.ValidationError);
         });
 
-        it('should throw error if to is invalid', () => {
+        it('should throw error if user is invalid', () => {
             const promise = notification.process(
-                _.extend({}, samples.sms, { to: '(3444) 9000' })
+                _.extend({}, samples.sms, { user: 23444 })
             );
 
             return expect(promise).to.be.eventually
                 .rejected.instanceOf(Errors.ValidationError);
         });
 
-        it('should throw error if from is invalid', () => {
+        it('should throw error if title is invalid', () => {
             const promise = notification.process(
-                _.extend({}, samples.sms, { from: '(3444) 9000' })
+                _.extend({}, samples.sms, { title: { val: 'once upon time' } })
             );
 
             return expect(promise).to.be.eventually

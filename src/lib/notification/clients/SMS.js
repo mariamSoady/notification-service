@@ -12,11 +12,10 @@ class SMS extends BaseNotifier {
             throw new Errors.IllegalArgumentError('missing SNS config');
         }
 
-        // this is a mock to client supporting mobile push notification service,
+        // this is a mock to client supporting mobile SMS service,
         // like AWS SNS or ..., real client will be created using config param
         this.client = {
             push(from, to, text) {
-                console.log(arguments);
                 return Promise.resolve({
                     from,
                     to,

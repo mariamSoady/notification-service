@@ -26,7 +26,7 @@ class SchemaValidator {
 
         const valid = this._ajvValidate(object);
         if (!valid) {
-            const error = new Errors.ValidationError('schema miss match');
+            const error = new Errors.ValidationError('schema missmatch');
             error.details = this._ajvValidate.errors;
 
             return Promise.reject(error);

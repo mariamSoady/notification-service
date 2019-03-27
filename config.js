@@ -10,11 +10,12 @@ module.exports = {
 
         clients: {
             SMS: {
-
+                app_id: process.env.SMS_APP_ID,
+                app_secret: process.env.SMS_APP_SECRET,
             },
 
             push_notification: {
-
+                app_token: process.env.PUSH_NOTIFICATION_APP_TOKEN,
             },
         },
 

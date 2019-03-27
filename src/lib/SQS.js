@@ -16,7 +16,7 @@ class SQS {
             !_.isString(config.access_key) ||
             !_.isString(config.access_token) ||
             !_.isString(config.uri)) {
-            throw new SQSQueueIllegalArgumentError(
+            throw new IllegalArgumentError(
                 'missing access key / access token / queue uri'
             );
         }

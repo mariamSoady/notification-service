@@ -16,6 +16,9 @@ class ContainerServiceNotFoundError extends Error {
     }
 }
 
+/**
+ * all services container, that store or return services identified by id
+ */
 class Container {
     constructor() {
         this.services = {};
